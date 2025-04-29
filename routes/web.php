@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Activity;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,6 +16,9 @@ Route::post('init', function () {
         'name' => 'init',
         'payload' => @json_encode(request()->all()),
     ]);
+    Log::debug('init');
+    Log::debug(request()->all());
+    Log::debug('======');
 
     // Request data example
     // {
@@ -39,6 +43,9 @@ Route::post('submit', function () {
         'name' => 'submit',
         'payload' => @json_encode(request()->all()),
     ]);
+    Log::debug('submit');
+    Log::debug(request()->all());
+    Log::debug('======');
 
     return ['success' => true, 'endpoint' => 'submit'];
 });
@@ -48,6 +55,9 @@ Route::post('config', function () {
         'name' => 'config',
         'payload' => @json_encode(request()->all()),
     ]);
+    Log::debug('config');
+    Log::debug(request()->all());
+    Log::debug('======');
 
     return ['success' => true, 'endpoint' => 'config'];
 });
@@ -57,6 +67,9 @@ Route::post('install', function () {
         'name' => 'install',
         'payload' => @json_encode(request()->all()),
     ]);
+    Log::debug('install');
+    Log::debug(request()->all());
+    Log::debug('======');
 
     return ['success' => true, 'endpoint' => 'install'];
 });
@@ -66,6 +79,9 @@ Route::post('uninstall', function () {
         'name' => 'uninstall',
         'payload' => @json_encode(request()->all()),
     ]);
+    Log::debug('uninstall');
+    Log::debug(request()->all());
+    Log::debug('======');
 
     return ['success' => true, 'endpoint' => 'uninstall'];
 });
@@ -75,6 +91,10 @@ Route::any('{part}', function () {
         'name' => request()->url(),
         'payload' => @json_encode(request()->all()),
     ]);
+    Log::debug('other');
+    Log::debug(request()->url());
+    Log::debug(request()->all());
+    Log::debug('======');
 
     return ['success' => true, 'endpoint' => 'other'];
 });
