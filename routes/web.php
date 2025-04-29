@@ -1,27 +1,53 @@
 <?php
 
+use App\Models\Activity;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('init', function () {
+Route::any('init', function () {
+    Activity::create([
+        'name' => 'init',
+        'payload' => @json_encode(request()->all()),
+    ]);
+
     return ['success' => true, 'endpoint' => 'init'];
 });
 
-Route::get('submit', function () {
+Route::any('submit', function () {
+    Activity::create([
+        'name' => 'submit',
+        'payload' => @json_encode(request()->all()),
+    ]);
+
     return ['success' => true, 'endpoint' => 'submit'];
 });
 
-Route::get('config', function () {
+Route::any('config', function () {
+    Activity::create([
+        'name' => 'config',
+        'payload' => @json_encode(request()->all()),
+    ]);
+
     return ['success' => true, 'endpoint' => 'config'];
 });
 
-Route::get('install', function () {
+Route::any('install', function () {
+    Activity::create([
+        'name' => 'install',
+        'payload' => @json_encode(request()->all()),
+    ]);
+
     return ['success' => true, 'endpoint' => 'install'];
 });
 
-Route::get('uninstall', function () {
+Route::any('uninstall', function () {
+    Activity::create([
+        'name' => 'uninstall',
+        'payload' => @json_encode(request()->all()),
+    ]);
+
     return ['success' => true, 'endpoint' => 'uninstall'];
 });
