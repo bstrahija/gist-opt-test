@@ -11,7 +11,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('init', function () {
+Route::any('init', function () {
     Activity::create([
         'name' => 'init',
         'payload' => @json_encode(request()->all()),
@@ -30,12 +30,20 @@ Route::post('init', function () {
     //     "card_creation_options": { "key": "value" } //can be more than one pair
     // }
 
-    // Example response
-    // { "canvas": {
-    //     A canvas object with content and components / }
-    // }
+    $response = [
+        'canvas' => [
+            'content' => [
+                'components' => [
+                    [
+                        'type' => 'text',
+                        'text' => 'Hello World!',
+                    ]
+                ]
+            ],
+        ]
+    ];
 
-    return ['success' => true, 'endpoint' => 'init'];
+    return $response;
 });
 
 Route::post('submit', function () {
