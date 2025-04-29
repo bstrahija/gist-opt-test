@@ -51,3 +51,12 @@ Route::any('uninstall', function () {
 
     return ['success' => true, 'endpoint' => 'uninstall'];
 });
+
+Route::any('{part}', function () {
+    Activity::create([
+        'name' => request()->url(),
+        'payload' => @json_encode(request()->all()),
+    ]);
+
+    return ['success' => true, 'endpoint' => 'uninstall'];
+});
