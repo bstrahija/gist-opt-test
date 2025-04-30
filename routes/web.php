@@ -11,7 +11,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::any('init', function () {
+Route::any('api/init', function () {
     Activity::create([
         'name' => 'init',
         'payload' => @json_encode(request()->all()),
@@ -46,7 +46,7 @@ Route::any('init', function () {
     return $response;
 });
 
-Route::post('submit', function () {
+Route::post('api/submit', function () {
     Activity::create([
         'name' => 'submit',
         'payload' => @json_encode(request()->all()),
@@ -58,7 +58,7 @@ Route::post('submit', function () {
     return ['success' => true, 'endpoint' => 'submit'];
 });
 
-Route::post('config', function () {
+Route::post('api/config', function () {
     Activity::create([
         'name' => 'config',
         'payload' => @json_encode(request()->all()),
@@ -67,10 +67,10 @@ Route::post('config', function () {
     Log::debug(request()->all());
     Log::debug('======');
 
-    return ['success' => true, 'endpoint' => 'config'];
+    return ['api/success' => true, 'endpoint' => 'config'];
 });
 
-Route::post('install', function () {
+Route::post('api/install', function () {
     Activity::create([
         'name' => 'install',
         'payload' => @json_encode(request()->all()),
@@ -82,7 +82,7 @@ Route::post('install', function () {
     return ['success' => true, 'endpoint' => 'install'];
 });
 
-Route::post('uninstall', function () {
+Route::post('api/uninstall', function () {
     Activity::create([
         'name' => 'uninstall',
         'payload' => @json_encode(request()->all()),
