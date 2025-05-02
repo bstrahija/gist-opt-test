@@ -15,20 +15,25 @@ class GistApiTokenAuthentication
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $appId = $request->input('app_id');
-        $token = $request->input('token');
+        $secret            = config('getgist.client_secret');
+        $data              = $request->getContent();
+        $expectedSignature = 'sha256=' . hash_hmac('sha256', $data, $secret);
+        $actualSignature   = $request->header('x-gist-signature');
 
-        // echo '<pre>';
-        // print_r($request->header());
-        // echo '</pre>';
-        // echo '<pre>';
-        // print_r($request->all());
-        // echo '</pre>';
-        // die();
-
-        // if ($request->input('token') !== 'my-secret-token') {
-        //     return response()->json(['error' => 'Unauthorized'], 401);
-        // }
+        if (!hash_equals($expectedSignature, $actualSignature)) {
+            return response()->json([
+                'canvas' => [
+                    'content' => [
+                        'components' => [
+                            [
+                                'type' => 'text',
+                                'text' => 'Invalid signature!',
+                            ]
+                        ]
+                    ],
+                ]
+            ], 401);
+        }
 
         return $next($request);
     }
