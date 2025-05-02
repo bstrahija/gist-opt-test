@@ -6,94 +6,39 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 
-function request_payload($encode = true)
-{
-    $input   = (array) request()->all();
-    $headers = (array) request()->header();
-    $payload = [
-        'headers' => $headers,
-        'input'   => $input,
-    ];
-
-    return $encode ? @json_encode($payload) : $payload;
-}
-
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::middleware([GistApiTokenAuthentication::class])->group(function () {
     Route::any('api/init', function () {
-        Activity::create([
-            'name' => 'init',
-            'payload' => request_payload(),
-        ]);
-        Log::debug('init');
-        Log::debug(request_payload());
-        Log::debug('======');
+        Activity::createFromRequest('init');
 
-        $response = [
-            'canvas' => [
-                'content' => [
-                    'components' => [
-                        [
-                            'type' => 'text',
-                            'text' => 'Hello World!',
-                        ]
-                    ]
-                ],
-            ]
-        ];
-
-        return $response;
+        return Activity::respondWithCanvas();
     });
 
     Route::post('api/submit', function () {
-        Activity::create([
-            'name' => 'submit',
-            'payload' => request_payload(),
-        ]);
-        Log::debug('submit');
-        Log::debug(request_payload());
-        Log::debug('======');
+        Activity::createFromRequest('subimt');
 
-        return ['success' => true, 'endpoint' => 'submit'];
+        return Activity::respondWithCanvas();
     });
 
     Route::post('api/config', function () {
-        Activity::create([
-            'name' => 'config',
-            'payload' => request_payload(),
-        ]);
-        Log::debug('config');
-        Log::debug(request_payload());
-        Log::debug('======');
+        Activity::createFromRequest('config');
 
-        return ['api/success' => true, 'endpoint' => 'config'];
+        return Activity::respondWithCanvas();
     });
 
     Route::post('api/install', function () {
-        Activity::create([
-            'name' => 'install',
-            'payload' => request_payload(),
-        ]);
-        Log::debug('install');
-        Log::debug(request_payload());
-        Log::debug('======');
+        Activity::createFromRequest('install');
 
-        return ['success' => true, 'endpoint' => 'install'];
+        return Activity::respondWithCanvas();
     });
 
     Route::post('api/uninstall', function () {
-        Activity::create([
-            'name' => 'uninstall',
-            'payload' => request_payload(),
-        ]);
-        Log::debug('uninstall');
-        Log::debug(request_payload());
-        Log::debug('======');
+        Activity::createFromRequest('uninstall');
 
-        return ['success' => true, 'endpoint' => 'uninstall'];
+        return Activity::respondWithCanvas();
     });
 
     Route::any('{part}', function () {
