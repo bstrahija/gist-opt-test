@@ -31,34 +31,42 @@ class Activity extends Model
                 'type' => 'text',
                 'text' => '**Name:** dummy@user.com',
             ],
+            ['type' => 'divider'],
             [
                 'type' => 'text',
                 'text' => '**Stripe Customer ID:** 123456789',
             ],
+            ['type' => 'divider'],
             [
                 'type' => 'text',
                 'text' => '**Plan:** Some plan',
             ],
+            ['type' => 'divider'],
             [
                 'type' => 'text',
                 'text' => '**Legacy:** No',
             ],
+            ['type' => 'divider'],
             [
                 'type' => 'text',
                 'text' => '**Created date:** 2025-05-01 10:00:00',
             ],
+            ['type' => 'divider'],
             [
                 'type' => 'text',
                 'text' => '**Renewal Date:** 2026-05-01 10:00:00',
             ],
+            ['type' => 'divider'],
             [
                 'type' => 'text',
                 'text' => '**Status:** Active',
             ],
+            ['type' => 'divider'],
             [
                 'type' => 'text',
                 'text' => '**Domain Limit:** 9999',
             ],
+            ['type' => 'divider'],
             [
                 'type' => 'text',
                 'text' => '**Conmfirmed:** Yes',
