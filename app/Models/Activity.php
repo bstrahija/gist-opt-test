@@ -27,6 +27,7 @@ class Activity extends Model
     public static function respondWithCanvas()
     {
         $components = [
+            ['type' => 'divider'],
             [
                 'type' => 'text',
                 'text' => '**Name:** dummy@user.com',
