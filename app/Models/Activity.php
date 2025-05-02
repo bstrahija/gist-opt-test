@@ -26,15 +26,56 @@ class Activity extends Model
 
     public static function respondWithCanvas()
     {
+        $components = [
+            [
+                'type' => 'text',
+                'text' => 'Name: dummy@user.com',
+            ],
+            [
+                'type' => 'text',
+                'text' => 'Stripe Customer ID: 123456789',
+            ],
+            [
+                'type' => 'text',
+                'text' => 'Plan: Some plan',
+            ],
+            [
+                'type' => 'text',
+                'text' => 'Legacy: No',
+            ],
+            [
+                'type' => 'text',
+                'text' => 'Created date: 2025-05-01 10:00:00',
+            ],
+            [
+                'type' => 'text',
+                'text' => 'Renewal Date: 2026-05-01 10:00:00',
+            ],
+            [
+                'type' => 'text',
+                'text' => 'Status: Active',
+            ],
+            [
+                'type' => 'text',
+                'text' => 'Domain Limit: 9999',
+            ],
+            [
+                'type' => 'text',
+                'text' => 'Conmfirmed: Yes',
+            ],
+        ];
+
+        // $components = [
+        //     [
+        //         'type' => 'text',
+        //         'text' => 'Under construction',
+        //     ]
+        //     ];
+
         $response = [
             'canvas' => [
                 'content' => [
-                    'components' => [
-                        [
-                            'type' => 'text',
-                            'text' => 'Hello World!',
-                        ]
-                    ]
+                    'components' => $components,
                 ],
             ]
         ];
