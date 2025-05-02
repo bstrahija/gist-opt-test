@@ -29,39 +29,39 @@ class Activity extends Model
         $components = [
             [
                 'type' => 'text',
-                'text' => 'Name: dummy@user.com',
+                'text' => '**Name:** dummy@user.com',
             ],
             [
                 'type' => 'text',
-                'text' => 'Stripe Customer ID: 123456789',
+                'text' => '**Stripe Customer ID:** 123456789',
             ],
             [
                 'type' => 'text',
-                'text' => 'Plan: Some plan',
+                'text' => '**Plan:** Some plan',
             ],
             [
                 'type' => 'text',
-                'text' => 'Legacy: No',
+                'text' => '**Legacy:** No',
             ],
             [
                 'type' => 'text',
-                'text' => 'Created date: 2025-05-01 10:00:00',
+                'text' => '**Created date:** 2025-05-01 10:00:00',
             ],
             [
                 'type' => 'text',
-                'text' => 'Renewal Date: 2026-05-01 10:00:00',
+                'text' => '**Renewal Date:** 2026-05-01 10:00:00',
             ],
             [
                 'type' => 'text',
-                'text' => 'Status: Active',
+                'text' => '**Status:** Active',
             ],
             [
                 'type' => 'text',
-                'text' => 'Domain Limit: 9999',
+                'text' => '**Domain Limit:** 9999',
             ],
             [
                 'type' => 'text',
-                'text' => 'Conmfirmed: Yes',
+                'text' => '**Conmfirmed:** Yes',
             ],
         ];
 
